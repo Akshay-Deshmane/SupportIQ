@@ -8,7 +8,7 @@ export async function GET(req : NextRequest) {
 
     const url = scalekit.getAuthorizationUrl(redirectUrl);
 
-    console.log(url);
+    // console.log(url);
 
     return NextResponse.redirect(url);
 }

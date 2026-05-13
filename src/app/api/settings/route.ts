@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
         const settings = await settingsModel.findOneAndUpdate(
             {ownerId},
             {ownerId, businessName, supportEmail, knowledge},
-            {new : true, upsert : true}
+            {returnDocument:"after",  upsert : true}
         );
 
         return NextResponse.json(

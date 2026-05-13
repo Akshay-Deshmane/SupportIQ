@@ -2,7 +2,7 @@ import { connect } from "mongoose";
 
 const mongo_url = process.env.MONGODB_URL;
 
-if(mongo_url) {
+if(!mongo_url) {
     console.log("MongoDb url is not found. Please try again");
 }
 

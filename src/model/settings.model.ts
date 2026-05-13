@@ -29,6 +29,6 @@ const settingSchema = new Schema<Isettings>(
     }
 );
 
-const settingsModel = mongoose.models.settingModel || model("settings", settingSchema);
+const settingsModel = mongoose.models.settings || model("settings", settingSchema);
 
 export default settingsModel;

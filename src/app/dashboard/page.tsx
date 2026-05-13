@@ -1,8 +1,16 @@
+import DashBoardClient from '@/components/DashBoardClient';
+import { getSession } from '@/lib/getSession'
 import React from 'react'
 
-const dashBoardPage = () => {
+async function dashBoardPage() {
+  
+  const session = await getSession();
+
+
   return (
-    <div>dashBoardPage</div>
+    <>
+        <DashBoardClient ownerId = {session?.user?.id!}/>
+    </>
   )
 }
 

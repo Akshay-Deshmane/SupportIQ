@@ -364,16 +364,44 @@ If information is unavailable, ask questions or escalate instead of guessing.
         contents: prompt,
         });
 
-        return NextResponse.json(response.text);
+        //const result = NextResponse.json(response.text);
+
+        const result = NextResponse.json({
+        reply: response.text
+        });
+
+        result.headers.set("Access-Control-Allow-Origin", "*");
+        result.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+        result.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+        return result;
+
 
         console.log(response)
 
     }
     catch(error) {
 
-       return NextResponse.json(
+       const result = NextResponse.json(
         {message : `Chat Error Occurred ${error}`},
         {status : 500}
        )
+
+        result.headers.set("Access-Control-Allow-Origin", "*");
+        result.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+        result.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+        return result;
     }
+}
+
+export const OPTIONS=async ()=> {
+   return NextResponse.json(null, {
+    status : 201,
+    headers : {
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"POST, OPTIONS",
+        "Access-Control-Allow-Headers":"Content-Type",
+    }
+   });
 }

@@ -7,7 +7,10 @@ import axios from 'axios'
 
 const HomeClient = ({email} : {email : string}) => {
 
+  const [loading, setLoading] = useState(false);
+
   const handleLogin=()=> {
+    setLoading(true)
     window.location.href="/api/auth/login"
   }
 
@@ -110,8 +113,9 @@ const HomeClient = ({email} : {email : string}) => {
                hover:bg-zinc-800 transition 
                disabled : opacity-60 flex items-center gap-2'
                onClick={handleLogin}
+               disabled={loading}
                >
-                Login 
+                {loading ? "Loading..." : "Login"} 
                </button>}
                
 
